@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Progress } from "@/components/ui/progress";
+import { FileCode, TerminalSquare, Aperture } from 'lucide-react';
 
 interface Skill {
   name: string;
@@ -36,34 +37,70 @@ const Skills = () => {
   ];
 
   const categories = [
-    { id: 'development', name: 'Web Development' },
-    { id: 'design', name: 'UI Design' },
-    { id: 'photography', name: 'Photography' },
+    { id: 'development', name: 'Web Development', icon: <FileCode size={20} className="text-blue-400" /> },
+    { id: 'design', name: 'UI Design', icon: <TerminalSquare size={20} className="text-purple-400" /> },
+    { id: 'photography', name: 'Photography', icon: <Aperture size={20} className="text-green-400" /> },
   ];
 
   return (
-    <section id="skills" className="section-padding bg-background">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="skills" className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full matrix-bg opacity-5"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="terminal-box mb-12 w-fit mx-auto">
+          <div className="terminal-header">
+            <div className="terminal-dot terminal-dot-red"></div>
+            <div className="terminal-dot terminal-dot-yellow"></div>
+            <div className="terminal-dot terminal-dot-green"></div>
+            <span className="ml-2 text-xs text-gray-400">skills.js</span>
+          </div>
+          <div className="code-line">
+            <span className="text-purple-400">function</span> <span className="text-yellow-300">displaySkills</span><span className="text-white">()</span> <span className="text-purple-400">{`{`}</span>
+          </div>
+          <div className="ml-4 code-line">
+            <span className="text-blue-400">return</span> <span className="text-green-300">'My Skills'</span>;
+          </div>
+          <div><span className="text-purple-400">{`}`}</span></div>
+        </div>
+        
         <h2 className="section-title text-center">My Skills</h2>
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
-          I've honed a diverse set of skills across web development, UI design, and photography,
-          allowing me to bring a unique perspective to every project.
+        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12 font-mono">
+          <span className="text-blue-400">const</span> <span className="text-yellow-300">skills</span> = [ <span className="text-primary">webDev</span>, <span className="text-accent">uiDesign</span>, <span className="text-green-400">photography</span> ];
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map((category) => (
-            <div key={category.id} className="bg-secondary/50 p-6 rounded-lg shadow-lg border border-border/30">
-              <h3 className="text-xl font-bold font-serif mb-6 text-center text-foreground">{category.name}</h3>
-              <div className="space-y-4">
+            <div key={category.id} className="terminal-box backdrop-blur-sm bg-secondary/30 border border-[#403E43]/50 transition-all duration-300 hover:border-primary/30 p-0 overflow-hidden">
+              <div className="terminal-header p-4 border-b border-[#403E43]/50">
+                <div className="flex items-center">
+                  {category.icon}
+                  <h3 className="text-xl font-bold font-mono ml-2 text-foreground">{category.name}</h3>
+                </div>
+              </div>
+              
+              <div className="p-6 space-y-4">
                 {skills
                   .filter((skill) => skill.category === category.id)
                   .map((skill) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-1">
-                        <span className="font-medium text-foreground">{skill.name}</span>
-                        <span className="text-muted-foreground">{skill.level}%</span>
+                        <span className="font-mono text-foreground">
+                          <span className="text-muted-foreground mr-2">{">"}</span>
+                          {skill.name}
+                        </span>
+                        <span className="text-muted-foreground font-mono">{skill.level}%</span>
                       </div>
-                      <Progress value={skill.level} className="h-2" />
+                      <Progress 
+                        value={skill.level} 
+                        className="h-2" 
+                        indicatorClassName={
+                          category.id === 'development' 
+                            ? "bg-blue-500" 
+                            : category.id === 'design' 
+                              ? "bg-purple-500" 
+                              : "bg-green-500"
+                        }
+                      />
                     </div>
                   ))}
               </div>
