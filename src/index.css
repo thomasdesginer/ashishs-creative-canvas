@@ -83,11 +83,11 @@
   }
   
   .glass-effect {
-    @apply backdrop-blur-lg bg-white/5 border border-white/10;
+    @apply backdrop-blur-lg bg-white/5 border border-white/10 rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.3)];
   }
   
   .neo-blur {
-    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+    @apply backdrop-blur-2xl bg-black/40 border border-white/10 rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-all duration-300 hover:shadow-[0_8px_32px_rgba(31,38,135,0.2)];
   }
   
   .text-gradient {
@@ -96,7 +96,7 @@
   
   /* Coder effect components */
   .terminal-box {
-    @apply bg-[#1A1F2C]/80 border border-[#403E43] rounded-md p-4 font-mono text-sm relative overflow-hidden;
+    @apply bg-[#1A1F2C]/80 backdrop-blur-xl border border-[#403E43] rounded-md p-4 font-mono text-sm relative overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.3)];
   }
   
   .terminal-header {
@@ -120,7 +120,7 @@
   }
   
   .code-block {
-    @apply font-mono bg-[#222]/70 p-4 rounded-md border border-[#555]/30 text-left overflow-x-auto;
+    @apply font-mono bg-[#222]/70 backdrop-blur-lg p-4 rounded-md border border-[#555]/30 text-left overflow-x-auto shadow-[0_4px_12px_rgba(0,0,0,0.1)];
   }
   
   .cursor-blink {
@@ -155,11 +155,40 @@
   
   .highlight-text::before {
     content: "";
-    @apply absolute inset-0 bg-primary/20 -z-10 rounded;
+    @apply absolute inset-0 bg-primary/20 -z-10 rounded backdrop-blur-sm;
   }
   
   .pixelated {
     image-rendering: pixelated;
+  }
+  
+  .glow {
+    @apply relative;
+  }
+  
+  .glow::after {
+    content: "";
+    @apply absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 z-[-1];
+    box-shadow: 0 0 20px 2px rgba(59, 130, 246, 0.3);
+  }
+  
+  .glow:hover::after {
+    @apply opacity-100;
+  }
+  
+  .frosted-glass {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+  }
+  
+  .card-3d {
+    @apply transition-all duration-300;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .card-3d:hover {
+    transform: translateY(-5px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -176,4 +205,25 @@
 @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: hsl(var(--primary)); }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.4);
+  }
 }

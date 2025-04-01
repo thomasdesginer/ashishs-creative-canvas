@@ -24,7 +24,7 @@ const Footer = () => {
           <div>
             <a 
               href="#home" 
-              className="bg-[#222] p-3 rounded-full hover:bg-[#333] transition-colors border border-[#555]/30"
+              className="neo-blur p-3 rounded-full hover:bg-[#333] transition-colors border border-[#555]/30 shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
               aria-label="Back to top"
             >
               <ChevronUp size={24} />

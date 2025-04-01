@@ -11,7 +11,7 @@ const About = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
-            <div className="terminal-box">
+            <div className="terminal-box card-3d animate-[float_6s_ease-in-out_infinite]">
               <div className="terminal-header">
                 <div className="terminal-dot terminal-dot-red"></div>
                 <div className="terminal-dot terminal-dot-yellow"></div>
@@ -46,11 +46,11 @@ const About = () => {
               </div>
             </div>
             
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/30 rounded-full z-[-1]"></div>
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full z-[-1]"></div>
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/30 rounded-full z-[-1] animate-pulse"></div>
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/20 rounded-full z-[-1] animate-[pulse-glow_4s_infinite]"></div>
           </div>
           
-          <div>
+          <div className="neo-blur p-6">
             <div className="flex items-center gap-2 mb-4">
               <Terminal size={20} className="text-primary" />
               <h2 className="section-title mb-0 inline-flex">About Me</h2>
@@ -70,7 +70,7 @@ const About = () => {
               Photography became my third passion, allowing me to capture moments and tell stories visually. These three disciplines complement each other perfectly in my work, enabling me to create holistic digital experiences.
             </p>
             
-            <Button className="flex items-center gap-2 bg-primary/80 hover:bg-primary border border-primary/30">
+            <Button className="flex items-center gap-2 bg-primary/80 hover:bg-primary border border-primary/30 shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:shadow-[0_0_20px_rgba(59,130,246,0.7)] transition-all duration-300">
               <Download size={18} />
               Download Resume
             </Button>

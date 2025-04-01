@@ -47,7 +47,7 @@ const Skills = () => {
       <div className="absolute top-0 left-0 w-full h-full matrix-bg opacity-5"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="terminal-box mb-12 w-fit mx-auto">
+        <div className="terminal-box mb-12 w-fit mx-auto backdrop-blur-xl bg-black/30 border border-white/10">
           <div className="terminal-header">
             <div className="terminal-dot terminal-dot-red"></div>
             <div className="terminal-dot terminal-dot-yellow"></div>
@@ -70,8 +70,8 @@ const Skills = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map((category) => (
-            <div key={category.id} className="terminal-box backdrop-blur-sm bg-secondary/30 border border-[#403E43]/50 transition-all duration-300 hover:border-primary/30 p-0 overflow-hidden">
-              <div className="terminal-header p-4 border-b border-[#403E43]/50">
+            <div key={category.id} className="neo-blur backdrop-blur-xl bg-black/40 border border-white/10 rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_32px_rgba(31,38,135,0.2)] transition-all duration-300 p-0 overflow-hidden">
+              <div className="p-4 border-b border-[#403E43]/50">
                 <div className="flex items-center">
                   {category.icon}
                   <h3 className="text-xl font-bold font-mono ml-2 text-foreground">{category.name}</h3>
@@ -92,14 +92,13 @@ const Skills = () => {
                       </div>
                       <Progress 
                         value={skill.level} 
-                        className="h-2" 
-                        indicatorClassName={
+                        className={`h-2 ${
                           category.id === 'development' 
-                            ? "bg-blue-500" 
+                            ? "bg-blue-500/20" 
                             : category.id === 'design' 
-                              ? "bg-purple-500" 
-                              : "bg-green-500"
-                        }
+                              ? "bg-purple-500/20" 
+                              : "bg-green-500/20"
+                        }`}
                       />
                     </div>
                   ))}
