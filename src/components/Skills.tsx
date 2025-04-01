@@ -42,7 +42,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="section-padding bg-gray-50">
+    <section id="skills" className="section-padding bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="section-title text-center">My Skills</h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
@@ -52,15 +52,15 @@ const Skills = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {categories.map((category) => (
-            <div key={category.id} className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold font-serif mb-6 text-center">{category.name}</h3>
+            <div key={category.id} className="bg-secondary/50 p-6 rounded-lg shadow-lg border border-border/30">
+              <h3 className="text-xl font-bold font-serif mb-6 text-center text-foreground">{category.name}</h3>
               <div className="space-y-4">
                 {skills
                   .filter((skill) => skill.category === category.id)
                   .map((skill) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-1">
-                        <span className="font-medium">{skill.name}</span>
+                        <span className="font-medium text-foreground">{skill.name}</span>
                         <span className="text-muted-foreground">{skill.level}%</span>
                       </div>
                       <Progress value={skill.level} className="h-2" />

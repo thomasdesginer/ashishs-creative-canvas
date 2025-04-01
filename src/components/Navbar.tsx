@@ -26,7 +26,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'py-5 bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/90 backdrop-blur-md shadow-md py-3' : 'py-5 bg-transparent'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <a href="#home" className="text-xl font-serif font-bold text-foreground">Ashish Newar</a>
@@ -59,7 +59,7 @@ const Navbar = () => {
         
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden bg-white shadow-lg rounded-lg mt-4 p-4 animate-fade-in">
+          <div className="md:hidden bg-secondary/90 backdrop-blur-md shadow-lg rounded-lg mt-4 p-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <a
