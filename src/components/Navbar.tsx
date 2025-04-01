@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Code } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -26,10 +26,17 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/90 backdrop-blur-md shadow-md py-3' : 'py-5 bg-transparent'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${
+      scrolled ? 'py-3 neo-blur shadow-[0_8px_32px_rgba(0,0,0,0.3)]' : 'py-5 bg-transparent'
+    }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          <a href="#home" className="text-xl font-serif font-bold text-foreground">Ashish Newar</a>
+          <a href="#home" className="text-xl font-mono font-bold text-foreground inline-flex items-center">
+            <Code className="mr-2 text-primary" size={20} />
+            <span className="text-primary">&lt;</span>
+            Ashish Newar
+            <span className="text-primary">/&gt;</span>
+          </a>
           
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-8">
@@ -37,9 +44,10 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="font-medium text-muted-foreground hover:text-primary transition-colors"
+                className="font-mono font-bold text-muted-foreground hover:text-primary transition-colors relative group"
               >
                 {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </div>
@@ -51,6 +59,7 @@ const Navbar = () => {
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
+              className="neo-blur hover:bg-[#333]/50"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
@@ -59,16 +68,16 @@ const Navbar = () => {
         
         {/* Mobile menu */}
         {isOpen && (
-          <div className="md:hidden bg-secondary/90 backdrop-blur-md shadow-lg rounded-lg mt-4 p-4 animate-fade-in">
+          <div className="md:hidden neo-blur rounded-lg mt-4 p-4 animate-fade-in border border-[#555]/30 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="font-medium text-muted-foreground hover:text-primary py-2 transition-colors"
+                  className="font-mono font-bold text-muted-foreground hover:text-primary py-2 transition-colors flex items-center"
                   onClick={() => setIsOpen(false)}
                 >
-                  {link.name}
+                  <span className="text-primary mr-2">$</span> {link.name}
                 </a>
               ))}
             </div>

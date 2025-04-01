@@ -46,15 +46,15 @@ const Footer = () => {
           </div>
           
           <div className="flex gap-8">
-            <a href="#about" className="text-gray-400 hover:text-primary transition-colors relative group">
+            <a href="#about" className="text-gray-400 hover:text-primary transition-colors relative group font-mono font-bold">
               About
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <a href="#web-dev" className="text-gray-400 hover:text-primary transition-colors relative group">
+            <a href="#web-dev" className="text-gray-400 hover:text-primary transition-colors relative group font-mono font-bold">
               Projects
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <a href="#contact" className="text-gray-400 hover:text-primary transition-colors relative group">
+            <a href="#contact" className="text-gray-400 hover:text-primary transition-colors relative group font-mono font-bold">
               Contact
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </a>
