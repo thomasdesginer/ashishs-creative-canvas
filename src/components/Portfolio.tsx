@@ -117,15 +117,29 @@ const Portfolio = () => {
   ];
 
   return (
-    <section className="section-padding bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="section-title text-center">My Portfolio</h2>
+    <section id="web-dev" className="section-padding bg-background relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full matrix-bg opacity-5"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="terminal-box mb-10 w-fit mx-auto">
+          <div className="terminal-header">
+            <div className="terminal-dot terminal-dot-red"></div>
+            <div className="terminal-dot terminal-dot-yellow"></div>
+            <div className="terminal-dot terminal-dot-green"></div>
+            <span className="ml-2 text-xs text-gray-400">portfolio.jsx</span>
+          </div>
+          <div className="code-line">
+            <span className="text-purple-400">const</span> <span className="text-yellow-300">renderProjects</span> <span className="text-white">=</span> <span className="text-purple-400">() =></span> <span className="text-white">projects.map(project</span> <span className="text-white">=></span> <span className="text-white"><></span><span className="text-pink-400">ProjectCard</span> <span className="text-white">/>)</span>;
+          </div>
+        </div>
+        
+        <h2 className="section-title text-center text-foreground">My Portfolio</h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
           Explore my work across web development, UI design, and photography. Each project reflects my passion for creating beautiful, functional, and meaningful experiences.
         </p>
         
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-10">
+          <TabsList className="grid w-full grid-cols-4 mb-10 neo-blur">
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="web-dev" id="web-dev">Web Development</TabsTrigger>
             <TabsTrigger value="ui-design" id="ui-design">UI Design</TabsTrigger>
@@ -175,44 +189,40 @@ const Portfolio = () => {
   );
 };
 
-interface ProjectCardProps {
-  project: Project;
-}
-
-const ProjectCard = ({ project }: ProjectCardProps) => {
+const ProjectCard = ({ project }: { project: Project }) => {
   return (
-    <div className="project-card group h-full flex flex-col">
+    <div className="neo-blur card-3d h-full flex flex-col border border-[#555]/30 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
       <div className="relative overflow-hidden">
         <img 
           src={project.image} 
           alt={project.title} 
           className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+        <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
           {project.links?.github && (
-            <a href={project.links.github} className="bg-white text-black p-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+            <a href={project.links.github} className="neo-blur text-primary p-2 rounded-full hover:bg-primary/20 transition-colors">
               <Github size={20} />
             </a>
           )}
           {project.links?.live && (
-            <a href={project.links.live} className="bg-white text-black p-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+            <a href={project.links.live} className="neo-blur text-primary p-2 rounded-full hover:bg-primary/20 transition-colors">
               <ExternalLink size={20} />
             </a>
           )}
           {project.category === 'photography' && (
-            <a href="#" className="bg-white text-black p-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+            <a href="#" className="neo-blur text-primary p-2 rounded-full hover:bg-primary/20 transition-colors">
               <Eye size={20} />
             </a>
           )}
         </div>
       </div>
-      <div className="p-5 flex-grow flex flex-col">
-        <h3 className="text-lg font-bold mb-2">{project.title}</h3>
+      <div className="p-5 flex-grow flex flex-col backdrop-blur-xl">
+        <h3 className="text-lg font-bold font-mono mb-2 text-foreground">{project.title}</h3>
         <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
         {project.tech && (
           <div className="flex flex-wrap gap-2 mt-auto">
             {project.tech.map((tech) => (
-              <span key={tech} className="bg-secondary text-xs px-2 py-1 rounded">
+              <span key={tech} className="neo-blur text-xs px-2 py-1 rounded text-primary">
                 {tech}
               </span>
             ))}
