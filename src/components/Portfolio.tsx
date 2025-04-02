@@ -129,7 +129,7 @@ const Portfolio = () => {
             <span className="ml-2 text-xs text-gray-400">portfolio.jsx</span>
           </div>
           <div className="code-line">
-            <span className="text-purple-400">const</span> <span className="text-yellow-300">renderProjects</span> <span className="text-white">=</span> <span className="text-purple-400">() =></span> <span className="text-white">projects.map(project</span> <span className="text-white">=></span> <span className="text-white"><></span><span className="text-pink-400">ProjectCard</span> <span className="text-white">/>)</span>;
+            <span className="text-purple-400">const</span> <span className="text-yellow-300">renderProjects</span> <span className="text-white">=</span> <span className="text-purple-400">() =&gt;</span> <span className="text-white">projects.map(project</span> <span className="text-white">=&gt;</span> <span className="text-white">&lt;</span><span className="text-pink-400">ProjectCard</span> <span className="text-white">/&gt;)</span>;
           </div>
         </div>
         
