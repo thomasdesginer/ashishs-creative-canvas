@@ -43,7 +43,7 @@ const Hero = () => {
             </div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold font-serif mb-4 animate-fade-in text-gradient" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-5xl md:text-7xl font-bold font-serif mb-4 animate-fade-in bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent animate-pulse drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]" style={{ animationDelay: '0.2s' }}>
             Ashish Newar
           </h1>
           

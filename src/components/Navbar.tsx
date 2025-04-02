@@ -31,10 +31,12 @@ const Navbar = () => {
     }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          <a href="#home" className="text-xl font-mono font-bold text-foreground inline-flex items-center">
+          <a href="#home" className="inline-flex items-center">
             <Code className="mr-2 text-primary" size={20} />
             <span className="text-primary">&lt;</span>
-            Ashish Newar
+            <span className="text-xl font-serif font-bold tracking-wider bg-gradient-to-r from-blue-400 via-purple-500 to-blue-400 bg-clip-text text-transparent">
+              Ashish Newar
+            </span>
             <span className="text-primary">/&gt;</span>
           </a>
           
