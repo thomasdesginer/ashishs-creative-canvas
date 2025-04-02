@@ -13,8 +13,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="contact" className="section-padding relative overflow-hidden">
+      {/* Animated code particles background */}
+      <div className="absolute inset-0 code-particles"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <h2 className="section-title text-center">Get In Touch</h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-12">
           Have a project in mind? I'd love to hear about it. Let's discuss how we can work together to bring your ideas to life.
@@ -22,8 +26,8 @@ const Contact = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div>
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+            <div className="neo-blur backdrop-blur-lg p-8 rounded-lg">
+              <h3 className="text-xl font-bold mb-6 text-foreground">Contact Information</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -31,7 +35,7 @@ const Contact = () => {
                     <MapPin className="text-primary" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-medium">Location</h4>
+                    <h4 className="font-medium text-foreground">Location</h4>
                     <p className="text-muted-foreground">New Delhi, India</p>
                   </div>
                 </div>
@@ -41,7 +45,7 @@ const Contact = () => {
                     <Mail className="text-primary" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-medium">Email</h4>
+                    <h4 className="font-medium text-foreground">Email</h4>
                     <p className="text-muted-foreground">hello@ashishnewar.com</p>
                   </div>
                 </div>
@@ -51,14 +55,14 @@ const Contact = () => {
                     <Phone className="text-primary" size={24} />
                   </div>
                   <div>
-                    <h4 className="font-medium">Phone</h4>
+                    <h4 className="font-medium text-foreground">Phone</h4>
                     <p className="text-muted-foreground">+91 98765 43210</p>
                   </div>
                 </div>
               </div>
               
               <div className="mt-8">
-                <h3 className="text-xl font-bold mb-4">Follow Me</h3>
+                <h3 className="text-xl font-bold mb-4 text-foreground">Follow Me</h3>
                 <div className="flex gap-4">
                   <a href="#" className="bg-primary/10 p-3 rounded-full hover:bg-primary/20 transition-colors">
                     <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -86,34 +90,34 @@ const Contact = () => {
           </div>
           
           <div>
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-xl font-bold mb-6">Send Me a Message</h3>
+            <form onSubmit={handleSubmit} className="neo-blur backdrop-blur-lg p-8 rounded-lg">
+              <h3 className="text-xl font-bold mb-6 text-foreground">Send Me a Message</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="block text-sm font-medium">
+                  <label htmlFor="name" className="block text-sm font-medium text-foreground">
                     Your Name
                   </label>
-                  <Input id="name" placeholder="John Doe" required />
+                  <Input id="name" placeholder="John Doe" required className="bg-black/20 border-white/10" />
                 </div>
                 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="block text-sm font-medium">
+                  <label htmlFor="email" className="block text-sm font-medium text-foreground">
                     Your Email
                   </label>
-                  <Input id="email" type="email" placeholder="john@example.com" required />
+                  <Input id="email" type="email" placeholder="john@example.com" required className="bg-black/20 border-white/10" />
                 </div>
               </div>
               
               <div className="space-y-2 mb-4">
-                <label htmlFor="subject" className="block text-sm font-medium">
+                <label htmlFor="subject" className="block text-sm font-medium text-foreground">
                   Subject
                 </label>
-                <Input id="subject" placeholder="How can I help you?" required />
+                <Input id="subject" placeholder="How can I help you?" required className="bg-black/20 border-white/10" />
               </div>
               
               <div className="space-y-2 mb-6">
-                <label htmlFor="message" className="block text-sm font-medium">
+                <label htmlFor="message" className="block text-sm font-medium text-foreground">
                   Message
                 </label>
                 <Textarea
@@ -121,10 +125,11 @@ const Contact = () => {
                   placeholder="Tell me about your project..."
                   rows={5}
                   required
+                  className="bg-black/20 border-white/10"
                 />
               </div>
               
-              <Button type="submit" className="w-full flex items-center justify-center gap-2">
+              <Button type="submit" className="w-full flex items-center justify-center gap-2 bg-primary/90 hover:bg-primary">
                 <Send size={18} />
                 Send Message
               </Button>

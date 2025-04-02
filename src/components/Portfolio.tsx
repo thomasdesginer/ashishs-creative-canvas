@@ -122,7 +122,9 @@ const Portfolio = () => {
 
   return (
     <section id="web-dev" className="section-padding py-12 md:py-16 bg-background relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full matrix-bg opacity-5"></div>
+      {/* Code grid animated background */}
+      <div className="absolute inset-0 code-grid"></div>
+      <div className="absolute inset-0 floating-code"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-[1400px]">
         <div className="terminal-box mb-8 md:mb-10 w-fit mx-auto scale-90 md:scale-100">
