@@ -3,6 +3,7 @@ import React from 'react';
 import { Eye, Github, ExternalLink } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useBreakpoint } from "@/hooks/use-mobile";
 
 interface Project {
   id: number;
@@ -18,6 +19,9 @@ interface Project {
 }
 
 const Portfolio = () => {
+  const breakpoint = useBreakpoint();
+  const isMobile = breakpoint === 'mobile';
+  
   const projects: Project[] = [
     // Web Development Projects
     {
@@ -117,11 +121,11 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="web-dev" className="section-padding bg-background relative overflow-hidden">
+    <section id="web-dev" className="section-padding py-12 md:py-16 bg-background relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full matrix-bg opacity-5"></div>
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="terminal-box mb-10 w-fit mx-auto">
+      <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-[1400px]">
+        <div className="terminal-box mb-8 md:mb-10 w-fit mx-auto scale-90 md:scale-100">
           <div className="terminal-header">
             <div className="terminal-dot terminal-dot-red"></div>
             <div className="terminal-dot terminal-dot-yellow"></div>
@@ -133,21 +137,21 @@ const Portfolio = () => {
           </div>
         </div>
         
-        <h2 className="section-title text-center text-foreground">My Portfolio</h2>
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-10">
+        <h2 className="section-title text-center text-foreground text-3xl md:text-4xl">My Portfolio</h2>
+        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-8 md:mb-10 text-sm md:text-base px-2">
           Explore my work across web development, UI design, and photography. Each project reflects my passion for creating beautiful, functional, and meaningful experiences.
         </p>
         
         <Tabs defaultValue="all" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-10 neo-blur">
-            <TabsTrigger value="all">All</TabsTrigger>
-            <TabsTrigger value="web-dev" id="web-dev">Web Development</TabsTrigger>
-            <TabsTrigger value="ui-design" id="ui-design">UI Design</TabsTrigger>
-            <TabsTrigger value="photography" id="photography">Photography</TabsTrigger>
+          <TabsList className={`grid w-full ${isMobile ? 'grid-cols-2 gap-2' : 'grid-cols-4'} mb-8 md:mb-10 neo-blur`}>
+            <TabsTrigger value="all" className="text-sm md:text-base">All</TabsTrigger>
+            <TabsTrigger value="web-dev" id="web-dev" className="text-sm md:text-base">Web Dev</TabsTrigger>
+            <TabsTrigger value="ui-design" id="ui-design" className="text-sm md:text-base mt-2 md:mt-0">UI Design</TabsTrigger>
+            <TabsTrigger value="photography" id="photography" className="text-sm md:text-base mt-2 md:mt-0">Photography</TabsTrigger>
           </TabsList>
           
           <TabsContent value="all">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {projects.map((project) => (
                 <ProjectCard key={project.id} project={project} />
               ))}
@@ -155,7 +159,7 @@ const Portfolio = () => {
           </TabsContent>
           
           <TabsContent value="web-dev">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {projects
                 .filter((project) => project.category === 'web-dev')
                 .map((project) => (
@@ -165,7 +169,7 @@ const Portfolio = () => {
           </TabsContent>
           
           <TabsContent value="ui-design">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {projects
                 .filter((project) => project.category === 'ui-design')
                 .map((project) => (
@@ -175,7 +179,7 @@ const Portfolio = () => {
           </TabsContent>
           
           <TabsContent value="photography">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {projects
                 .filter((project) => project.category === 'photography')
                 .map((project) => (
@@ -192,37 +196,37 @@ const Portfolio = () => {
 const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div className="neo-blur card-3d h-full flex flex-col border border-[#555]/30 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden group">
         <img 
           src={project.image} 
           alt={project.title} 
-          className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-48 md:h-56 object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
           {project.links?.github && (
             <a href={project.links.github} className="neo-blur text-primary p-2 rounded-full hover:bg-primary/20 transition-colors">
-              <Github size={20} />
+              <Github size={18} />
             </a>
           )}
           {project.links?.live && (
             <a href={project.links.live} className="neo-blur text-primary p-2 rounded-full hover:bg-primary/20 transition-colors">
-              <ExternalLink size={20} />
+              <ExternalLink size={18} />
             </a>
           )}
           {project.category === 'photography' && (
             <a href="#" className="neo-blur text-primary p-2 rounded-full hover:bg-primary/20 transition-colors">
-              <Eye size={20} />
+              <Eye size={18} />
             </a>
           )}
         </div>
       </div>
-      <div className="p-5 flex-grow flex flex-col backdrop-blur-xl">
-        <h3 className="text-lg font-bold font-mono mb-2 text-foreground">{project.title}</h3>
-        <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
+      <div className="p-4 md:p-5 flex-grow flex flex-col backdrop-blur-xl">
+        <h3 className="text-base md:text-lg font-bold font-mono mb-2 text-foreground">{project.title}</h3>
+        <p className="text-muted-foreground mb-3 md:mb-4 flex-grow text-sm md:text-base">{project.description}</p>
         {project.tech && (
-          <div className="flex flex-wrap gap-2 mt-auto">
+          <div className="flex flex-wrap gap-1.5 md:gap-2 mt-auto">
             {project.tech.map((tech) => (
-              <span key={tech} className="neo-blur text-xs px-2 py-1 rounded text-primary">
+              <span key={tech} className="neo-blur text-xs px-1.5 md:px-2 py-0.5 md:py-1 rounded text-primary">
                 {tech}
               </span>
             ))}
